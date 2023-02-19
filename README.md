@@ -8,11 +8,11 @@ Features:
 - The price prediction model uses a Long Short-Term Memory (LSTM) Recurrent Neural Network algorithm. 
 - Sentiment analysis is conducted on the news related to a particular stock.
 
-This is AAPL stock intial prediction
+This is AAPL stock intial prediction.
 
 <img width="500" alt="AAPL" src="https://github.com/umangptl/Software-Engineering-Project-Seminar_1/blob/main/Resources/AAPL.png">
 
-This is AMZN stock intial prediction
+This is AMZN stock intial prediction.
 
 <img width="500" alt="AMZN" src="https://github.com/umangptl/Software-Engineering-Project-Seminar_1/blob/main/Resources/AMZN.png">
 
