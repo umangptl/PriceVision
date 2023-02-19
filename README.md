@@ -14,7 +14,7 @@ This is AAPL stock intial prediction.
 
 This is AMZN stock intial prediction.
 
-<img width="500" alt="AMZN" src="https://github.com/umangptl/Software-Engineering-Project-Seminar_1/blob/main/Resources/AMZN.png">
+<img width="500" alt="AMZN" src="https://github.com/umangptl/Software-Engineering-Project-Seminar_1/blob/main/Resources/AmZN.png">
 
 
 We will keep updating the ReadMe as we progress with the development of the application.
