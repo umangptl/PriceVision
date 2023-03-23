@@ -17,6 +17,7 @@ This is AMZN stock intial prediction.
 <img width="500" alt="AMZN" src="https://github.com/umangptl/Software-Engineering-Project-Seminar_1/blob/main/Resources/AmZN.png">
 
 ## Limitations of stock price prediction 
+### The numbers below are based on PriceVision02 using AAPL stock from '2016-01-01' to '2023-03-01'
 The prediction model for the stock closing prices has an RMSE value of 3.913 and an MAPE value of 2.117%. The RMSE represents the standard deviation of the residuals, or the differences between the predicted and actual values. A lower RMSE value indicates that the model's predictions are closer to the actual values. In this case, the RMSE value of 3.913 suggests that the model's predictions have an average error of around 3.9 points.
 
 The MAPE, on the other hand, represents the average percentage difference between the predicted and actual values. The lower the MAPE value, the better the model's accuracy. The MAPE value of 2.117% indicates that the model's predictions have an average percentage error of around 2.1%.
