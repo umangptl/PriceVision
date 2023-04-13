@@ -25,7 +25,7 @@ The prediction model for the stock closing prices has an RMSE value of 4.648 and
 
 The MAPE, on the other hand, represents the average percentage difference between the predicted and actual values. The lower the MAPE value, the better the model's accuracy. The MAPE value of 2.435% indicates that the model's predictions have an average percentage error of around 2.4%.
 
-Overall, the model seems to perform well in predicting the stock closing prices, with an RMSE value of 4.648 and an MAPE value of 2.435%. However, it's important to note that stock price prediction can be a challenging task depending on diffenrent econimic factors which arent used in this prediction program
+Overall, the model seems to perform well in predicting the stock closing prices, with an RMSE value of 4.648 and an MAPE value of 2.435%. However, it's important to note that stock price prediction can be a challenging task depending on diffenrent economic factors which arent used in this prediction program
 
 ## Frontend using React
 Machine learning predictions are made using python whcih then send the data react App using flask API connecting both ends 
