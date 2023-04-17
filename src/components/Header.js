@@ -1,13 +1,25 @@
-// components/Header.js
 import React from 'react';
+import backgroundImage from '../data/backgound2.jpg';
 
 const Header = () => {
   return (
     <header className="bg-primary h-screen relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-50 z-10"></div>
+      <div
+        className="absolute inset-0 z-10"
+        style={{
+          backgroundImage: `url(${backgroundImage})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          //Dull the image
+          filter: 'brightness(0.5)', 
+          
+        }}
+      ></div>
       <div className="container mx-auto px-4 h-full flex flex-col justify-center items-center text-secondary relative z-20">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">Stock Prediction Capstone</h1>
-        <p className="text-lg md:text-xl text-center max-w-2xl">Explore our machine learning-driven stock predictions for 10 different stocks, and make informed investment decisions.</p>
+        <h1 className="text-6xl md:text-7xl font-bold mb-4 text-white shadow-md">Stock Prediction Capstone</h1>
+        <p className="text-2xl md:text-3xl text-center max-w-2xl text-white shadow-md">
+          Explore our machine learning-driven stock predictions for 10 different stocks, and make informed investment decisions.
+        </p>
       </div>
     </header>
   );

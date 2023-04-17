@@ -4,7 +4,7 @@ const stockData = {
       ticker: 'AAPL',
       sector: 'Technology',
       industry: 'Consumer Electronics',
-      description: 'Apple Inc. designs, manufactures, and markets smartphones, personal computers, tablets, wearables, and accessories worldwide.',
+      description: 'Apple Inc. is an American multinational technology company headquartered in Cupertino, California. Apple is the worlds largest technology company by revenue, with US$394.3 billion in 2022 revenue. As of March 2023, Apple is the worlds biggest company by market capitalization. As of June 2022, Apple is the fourth-largest personal computer vendor by unit sales and second-largest mobile phone manufacturer. It is one of the Big Five American information technology companies, alongside Alphabet Inc. (parent company of Google), Amazon, Meta Platforms (formerly for Facebook Inc), and Microsoft.',
     },
     MSFT: {
       name: 'Microsoft Corporation',

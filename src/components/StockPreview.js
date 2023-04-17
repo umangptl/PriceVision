@@ -43,12 +43,7 @@ const StockPreview = () => {
                 >
                   <p className="text-sm mb-4">{stock.description}</p>
                   <div className="flex justify-between">
-                    <div>
-                      <span className="font-semibold">Price:</span> ${stock.price || '123.45'} {/* Replace with real data */}
-                    </div>
-                    <div>
-                      <span className="font-semibold">Buy Prediction:</span> {(stock.buyPrediction || 0.75) * 100}% {/* Replace with real data */}
-                    </div>
+
                   </div>
                   <Link to={`/stock/${stock.ticker}`} className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-800 transition-colors">
                     View Details

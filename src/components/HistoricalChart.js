@@ -57,7 +57,8 @@ const HistoricalChart = ({ symbol }) => {
       const predictionsArray = JSON.parse(predictionsText.trim());
       console.log('Predictions Recieved');
       const pred = predictionsArray
-      .slice(1) // Trim the first item
+      //remove first element
+      .slice(0)
       .map((item) => ({
         date: item.date,
         price: Math.round(item.price * 100) / 100, // Round to the nearest cent
@@ -80,7 +81,7 @@ const HistoricalChart = ({ symbol }) => {
   useEffect(() => {
     if (chartRef.current) {
       // Connect the lines by including the last historical data point in the predictions array
-      const connectedPredictions = historicalData.length > 0 ? [historicalData[historicalData.length - 1], ...predictions] : predictions;
+      const connectedPredictions = predictions;
 
       const chart = new Chart(chartRef.current, {
         type: 'line',

@@ -7,63 +7,66 @@ import StockInfo from '../components/StockInfo';
 import stockData from '../data/stockData';
 
 const StockPage = () => {
-  const newsApiKey = 'cbcd6d0afbfa45dea8922aa9ced7bfbb';
-  const API_KEY = 'KVBNYD044OTRQZS1'; 
+  const newsApiKey = '5139675ce71e4f4e84bbda08d8f57474';
+  const API_KEY = 'KVBNYD044OTRQZS1';
   const { symbol } = useParams();
 
   const [news, setNews] = useState([]);
   const [sentiment, setSentiment] = useState('');
   const [tweets, setTweets] = useState([]);
-  const [companyOverview, setCompanyOverview] = useState({});
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [sector, setSector] = useState('');
-  const [industry, setIndusty] = useState('');
-  const [predictions, setPredictions] = useState([]);
-  const [historicalData, setHistoricalData] = useState([]);
-  const [predictionlData, setPredictionData] = useState([]);
+  const [industry, setIndustry] = useState('');
   const [stockInfo, setStockInfo] = useState({
     price: 0,
     change: 0,
     changePercent: 0,
+    oneDayChange: 0,
+    oneWeekChange: 0,
+    oneDayChangePercent: 0,
+    oneWeekChangePercent: 0,
   });
-  
-
 
   useEffect(() => {
     const hardcodedStockData = stockData;
-  
+
     const setHardcodedStockData = (symbol) => {
       if (hardcodedStockData[symbol]) {
         setName(hardcodedStockData[symbol].name);
         setDescription(hardcodedStockData[symbol].description);
         setSector(hardcodedStockData[symbol].sector);
-        setIndusty(hardcodedStockData[symbol].industry);
+        setIndustry(hardcodedStockData[symbol].industry);
       }
     };
-  
-    const fetchStockInfo = async () => {
-      const API_KEY = 'YOUR_API_KEY';
-  
+
+    const fetchNews = async () => {
+
       setHardcodedStockData(symbol);
-  
+      const url = `https://newsapi.org/v2/everything?q=${symbol}&apiKey=${newsApiKey}`;
+      const response = await fetch(url);
+      const json = await response.json();
+      
+      console.log(json);
+    
+      const newsArticles = json.articles.map((article) => ({
+        title: article.title,
+        url: article.url,
+        date: article.publishedAt,
+        imageUrl: article.urlToImage,
+      }));
+    
+      setNews(newsArticles);
+    };
+    
+
+    const fetchStockInfo = async () => {
+      setHardcodedStockData(symbol);
+
       const stockInfoUrl = `https://www.alphavantage.co/query?function=OVERVIEW&symbol=${symbol}&apikey=${API_KEY}`;
-      const cachedStockInfo = localStorage.getItem(`stockInfo_${symbol}`);
-      let stockInfo;
-  
-      if (cachedStockInfo) {
-        stockInfo = JSON.parse(cachedStockInfo);
-      } else {
-        const stockInfoResponse = await fetch(stockInfoUrl);
-        const stockInfoJson = await stockInfoResponse.json();
-        localStorage.setItem(`stockInfo_${symbol}`, JSON.stringify(stockInfoJson));
-        stockInfo = stockInfoJson;
-      }
-  
-      //setName(stockInfo.Name);
-      //setDescription(stockInfo.Description);
-      //setSector(stockInfo.Sector);
-  
+      const stockInfoResponse = await fetch(stockInfoUrl);
+      const stockInfoJson = await stockInfoResponse.json();
+
       const historicalUrl = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${symbol}&outputsize=compact&apikey=${API_KEY}`;
       const historicalResponse = await fetch(historicalUrl);
       const historicalJson = await historicalResponse.json();
@@ -74,46 +77,50 @@ const StockPage = () => {
           date,
           price: parseFloat(data['4. close']),
         }));
-  
+
       if (historicalData.length === 2) {
         const yesterdayPrice = historicalData[0].price;
         const todayPrice = historicalData[1].price;
         const change = todayPrice - yesterdayPrice;
         const changePercent = (change / yesterdayPrice) * 100;
-  
-        setStockInfo({
-          price: todayPrice,
-          change: change,
-          changePercent: changePercent,
-        });
+
+        try {
+          console.log('Trying Prediction');
+          const predictionsUrl = `https://pricevision.ngrok.io/${symbol}`;
+          const predictionsResponse = await fetch(predictionsUrl);
+          const predictionsText = await predictionsResponse.text();
+          const predictionsArray = JSON.parse(predictionsText.trim());
+          const pred = predictionsArray
+            .map((item) => ({
+              date: item.date,
+              price: Math.round(item.price * 100) / 100, // Round to the nearest cent
+            }));
+        
+          const oneDayPredictionPrice = pred[1].price;
+          const oneWeekPredictionPrice = pred[7].price;
+          const oneDayChange = oneDayPredictionPrice - todayPrice;
+          const oneWeekChange = oneWeekPredictionPrice - todayPrice;
+          const oneDayChangePercent = (oneDayChange / todayPrice) * 100;
+          const oneWeekChangePercent = (oneWeekChange / todayPrice) * 100;
+        
+          setStockInfo({
+            price: todayPrice,
+            change: change,
+            changePercent: changePercent,
+            oneDayChange: oneDayChange,
+            oneWeekChange: oneWeekChange,
+            oneDayChangePercent: oneDayChangePercent,
+            oneWeekChangePercent: oneWeekChangePercent,
+          });
+        } catch (error) {
+          console.log('Error:', error);
+        }
       }
     };
 
-
-
-      fetchStockInfo();
-
-      const fetchNews = async () => {
-      const url = `https://newsapi.org/v2/everything?q=${symbol}&apiKey=${newsApiKey}`;
-      const response = await fetch(url);
-      const json = await response.json();
-      
-      const newsArticles = json.articles.map((article) => ({
-        title: article.title,
-        url: article.url,
-        date: article.publishedAt,
-        imageUrl: article.urlToImage,
-      }));
-      
-      setNews(newsArticles);
-      };
-      
-      fetchNews();
-      
-      setNews([
-      { title: 'Sample News Article', url: 'https://example.com', date: '2022-01-01' },
-        // ...
-      ]);
+    fetchNews();
+    fetchStockInfo();
+ 
 
     setSentiment('Positive');
 
@@ -122,11 +129,8 @@ const StockPage = () => {
       // ...
     ]);
 
-
-
   }, [symbol]);
 
- 
   return (
     <div className="container mx-auto px-4 py-12 bg-gray-100">
       <div className="bg-white shadow-md rounded-lg p-6">
@@ -141,6 +145,10 @@ const StockPage = () => {
               price={stockInfo.price}
               change={stockInfo.change}
               changePercent={stockInfo.changePercent}
+              oneDayChange={stockInfo.oneDayChange ?? 0}
+              oneWeekChange={stockInfo.oneWeekChange ?? 0}
+              oneDayChangePercent={stockInfo.oneDayChangePercent ?? 0}
+              oneWeekChangePercent={stockInfo.oneWeekChangePercent ?? 0}
             />
           </div>
         </div>
@@ -166,7 +174,6 @@ const StockPage = () => {
           <div className="space-y-8">
             <NewsSection news={news} />
             {/* <SentimentSection sentiment={sentiment} /> */}
-            <TwitterSection tweets={tweets} />
           </div>
         </div>
       </div>
