@@ -9,6 +9,7 @@
 - News related to a particular stock.
 - User-friendly Interface 
 - Graph showing historical data and prediction price 
+- Buy/sell singal 
 
 
 This is AAPL stock initial prediction.
