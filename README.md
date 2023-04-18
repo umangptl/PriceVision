@@ -1,8 +1,6 @@
 # PriceVision
 
-*Underconstuction - We will be updating the ReadMe as we progress*
-
-### PriceVision is a web application designed to provide stock price predictions and sentiment analysis of news for buying and selling stock.
+### PriceVision is a web application designed to provide stock price predictions and help you gett all the news for buying and selling stock.
 
 ## Features:
 - The price prediction model uses a Long Short-Term Memory (LSTM) Recurrent Neural Network algorithm. 
@@ -35,8 +33,4 @@ below are some of the picture of the user interface
 
 <img width="500" alt="AMZN" src="https://github.com/umangptl/PriceVision/blob/main/Resources/image.png">
 <img width="500" alt="AMZN" src="https://github.com/umangptl/PriceVision/blob/main/Resources/image2.png">
-<img width="500" alt="AMZN" src="https://github.com/umangptl/PriceVision/blob/main/Resources/image3.png">
-
-
-
-## (We will keep updating the ReadMe as we progress with the development of the application.)
+<img width="500" alt="AMZN" src="https://github.com/umangptl/PriceVision/blob/main/Resources/image5.jpeg">
