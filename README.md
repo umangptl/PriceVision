@@ -2,6 +2,9 @@
 
 ### PriceVision is a web application designed to provide stock price predictions and help you gett all the news for buying and selling stock.
 
+#### It's important to note that stock price prediction can be a challenging task depending on different economic factors which aren't used in this prediction program and it is not not responsible for any investment losses.
+
+
 ## Features:
 - The price prediction model uses a Long Short-Term Memory (LSTM) Recurrent Neural Network algorithm. 
 - News related to a particular stock.
