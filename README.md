@@ -2,7 +2,9 @@
 
 ### PriceVision is a web application designed to provide stock price predictions and help you gett all the news for buying and selling stock.
 
-#### It's important to note that stock price prediction can be a challenging task depending on different economic factors which aren't used in this prediction program and it is not not responsible for any investment losses.
+#### It's important to note that stock price prediction can be a challenging task depending on different economic factors which aren't used in this prediction program 
+
+### Disclaimer: The predictions provided are for informational purposes only and should not be considered as financial advice. We are not responsible for any financial investment losses
 
 
 ## Features:
