@@ -2,8 +2,7 @@ import React from 'react';
 
 const StockInfo = ({
   price,
-  change,
-  changePercent,
+  signal,
   oneDayChange,
   oneWeekChange,
   oneDayChangePercent,
@@ -18,14 +17,13 @@ const StockInfo = ({
           <dd className="text-lg font-semibold text-gray-800">${price.toFixed(2)}</dd>
         </div>
         <div>
-          <dt>Change</dt>
+          <dt>Signal</dt>
           <dd
             className={`text-lg font-semibold ${
-              change >= 0 ? 'text-green-600' : 'text-red-600'
+              signal === "Buy" ? 'text-green-600' : 'text-red-600'
             }`}
           >
-            {change >= 0 ? '+' : '-'}${Math.abs(change).toFixed(2)} (
-            {changePercent.toFixed(2)}%)
+            {signal}
           </dd>
         </div>
         <div>

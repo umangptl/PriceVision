@@ -16,9 +16,9 @@ const Header = () => {
         }}
       ></div>
       <div className="container mx-auto px-4 h-full flex flex-col justify-center items-center text-secondary relative z-20">
-        <h1 className="text-6xl md:text-7xl font-bold mb-4 text-white shadow-md">Stock Prediction Capstone</h1>
+        <h1 className="text-6xl md:text-7xl font-bold mb-4 text-white shadow-md">Price-Vision</h1>
         <p className="text-2xl md:text-3xl text-center max-w-2xl text-white shadow-md">
-          Explore our machine learning-driven stock predictions for 10 different stocks, and make informed investment decisions.
+          Explore our machine learning-driven stock predictions for 12 different stocks, and make informed investment decisions.
         </p>
       </div>
     </header>

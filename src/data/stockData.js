@@ -11,14 +11,14 @@ const stockData = {
       ticker: 'MSFT',
       sector: 'Technology',
       industry: 'Software—Infrastructure',
-      description: 'Microsoft Corporation develops, licenses, and supports software, services, devices, and solutions worldwide.',
+      description: 'Microsoft Corporation is an American multinational technology corporation headquartered in Redmond, Washington. Microsofts best-known software products are the Windows line of operating systems, the Microsoft Office suite, and the Internet Explorer and Edge web browsers. Its flagship hardware products are the Xbox video game consoles and the Microsoft Surface lineup of touchscreen personal computers. Microsoft ranked No. 14 in the 2022 Fortune 500 rankings of the largest United States corporations by total revenue; it was the worlds largest software maker by revenue as of 2022.',
     },
     AMZN: {
       name: 'Amazon.com, Inc.',
       ticker: 'AMZN',
       sector: 'Consumer Cyclical',
       industry: 'Internet Retail',
-      description: 'Amazon.com, Inc. engages in the retail sale of consumer products and subscriptions in North America and internationally.',
+      description: 'Amazon.com, Inc. is an American multinational technology company focusing on e-commerce, cloud computing, online advertising, digital streaming, and artificial intelligence. It has been often referred to as "one of the most influential economic and cultural forces in the world", and is often regarded as one of the worlds most valuable brands',
     },
     GOOG: {
       name: 'Alphabet Inc.',

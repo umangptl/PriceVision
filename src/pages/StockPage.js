@@ -20,8 +20,7 @@ const StockPage = () => {
   const [industry, setIndustry] = useState('');
   const [stockInfo, setStockInfo] = useState({
     price: 0,
-    change: 0,
-    changePercent: 0,
+    signal: 0,
     oneDayChange: 0,
     oneWeekChange: 0,
     oneDayChangePercent: 0,
@@ -63,26 +62,6 @@ const StockPage = () => {
     const fetchStockInfo = async () => {
       setHardcodedStockData(symbol);
 
-      const stockInfoUrl = `https://www.alphavantage.co/query?function=OVERVIEW&symbol=${symbol}&apikey=${API_KEY}`;
-      const stockInfoResponse = await fetch(stockInfoUrl);
-      const stockInfoJson = await stockInfoResponse.json();
-
-      const historicalUrl = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${symbol}&outputsize=compact&apikey=${API_KEY}`;
-      const historicalResponse = await fetch(historicalUrl);
-      const historicalJson = await historicalResponse.json();
-      const historicalData = Object.entries(historicalJson['Time Series (Daily)'])
-        .slice(0, 2)
-        .reverse()
-        .map(([date, data]) => ({
-          date,
-          price: parseFloat(data['4. close']),
-        }));
-
-      if (historicalData.length === 2) {
-        const yesterdayPrice = historicalData[0].price;
-        const todayPrice = historicalData[1].price;
-        const change = todayPrice - yesterdayPrice;
-        const changePercent = (change / yesterdayPrice) * 100;
 
         try {
           console.log('Trying Prediction');
@@ -96,17 +75,23 @@ const StockPage = () => {
               price: Math.round(item.price * 100) / 100, // Round to the nearest cent
             }));
         
+          const todayPrice = pred[0].price;
           const oneDayPredictionPrice = pred[1].price;
           const oneWeekPredictionPrice = pred[7].price;
           const oneDayChange = oneDayPredictionPrice - todayPrice;
           const oneWeekChange = oneWeekPredictionPrice - todayPrice;
           const oneDayChangePercent = (oneDayChange / todayPrice) * 100;
           const oneWeekChangePercent = (oneWeekChange / todayPrice) * 100;
+
+          console.log('Trying Prediction');
+          const predictionsUrl2 = `https://pricevision.ngrok.io/${symbol}/signal`;
+          const predictionsResponse2 = await fetch(predictionsUrl2);
+          const predictionsJson2 = await predictionsResponse2.json();
+          const signal = predictionsJson2.signal;
         
           setStockInfo({
             price: todayPrice,
-            change: change,
-            changePercent: changePercent,
+            signal: signal,
             oneDayChange: oneDayChange,
             oneWeekChange: oneWeekChange,
             oneDayChangePercent: oneDayChangePercent,
@@ -116,7 +101,7 @@ const StockPage = () => {
           console.log('Error:', error);
         }
       }
-    };
+  
 
     fetchNews();
     fetchStockInfo();
@@ -143,8 +128,7 @@ const StockPage = () => {
           <div className="w-full lg:w-1/3">
             <StockInfo
               price={stockInfo.price}
-              change={stockInfo.change}
-              changePercent={stockInfo.changePercent}
+              signal={stockInfo.signal}
               oneDayChange={stockInfo.oneDayChange ?? 0}
               oneWeekChange={stockInfo.oneWeekChange ?? 0}
               oneDayChangePercent={stockInfo.oneDayChangePercent ?? 0}
