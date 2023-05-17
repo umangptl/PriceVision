@@ -1,6 +1,6 @@
 # PriceVision
 
-### PriceVision is a web application designed to provide stock price predictions and help you gett all the news for buying and selling stock.
+### PriceVision is a web application designed to provide stock price predictions and help people receive all the news for buying and selling stock.
 
 #### It's important to note that stock price prediction can be a challenging task depending on different economic factors which aren't used in this prediction program 
 
