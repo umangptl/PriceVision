@@ -61,7 +61,7 @@ const API_KEY = 'YOUR_ALPHAVANTAGE_API';
 
 ### Main Page
 <img width="500" alt="AMZN" src="https://github.com/umangptl/PriceVision/blob/main/Resources/image.png">
-<img width="500" alt="AMZN" src="https://github.com/umangptl/PriceVision/blob/main/Resources/image2.png">
+<img width="500" alt="AMZN" src="https://github.com/umangptl/PriceVision/blob/main/Resources/image2.1.png">
 
 ### Stock Page 
 <img width="500" alt="AMZN" src="https://github.com/umangptl/PriceVision/blob/main/Resources/image5.jpeg">
