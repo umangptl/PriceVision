@@ -34,8 +34,34 @@ Overall, the model seems to perform well in predicting the stock closing prices,
 ## Frontend using React
 Machine learning predictions are made using python which then send the data react App using flask API connecting both ends 
 
-below are some of the picture of the user interface 
+### Technologies Used
+- GoogleColab
+- Ngrok
+- Alphavantage
+- News API
+- React
 
+### Prerequisites
+- Python
+- Ngrok Auth Token - https://ngrok.com
+- API keys
+    - News API - https://wwww.newsapi.org
+    - Alphavantage - https://www.alphavantage.co
+
+##Getting Started
+1. Download and run the FinalPriceVision.ipynd to your Googlelab and replace your Auth Token 
+```
+authtoken= "YOUR_TOKEN"
+```
+2. Replace your News API and Alphavantage API in the react APP
+```
+const newsApiKey = 'YOUR_NEWS_API';
+const API_KEY = 'YOUR_ALPHAVANTAGE_API';
+```
+
+### Main Page
 <img width="500" alt="AMZN" src="https://github.com/umangptl/PriceVision/blob/main/Resources/image.png">
 <img width="500" alt="AMZN" src="https://github.com/umangptl/PriceVision/blob/main/Resources/image2.png">
+
+### Stock Page 
 <img width="500" alt="AMZN" src="https://github.com/umangptl/PriceVision/blob/main/Resources/image5.jpeg">
