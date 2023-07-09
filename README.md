@@ -45,7 +45,7 @@ Machine learning predictions are made using Python which then sends the data to 
 - Python
 - Ngrok Auth Token - https://ngrok.com
 - API keys
-    - News API - https://wwww.newsapi.org
+    - News API - https://www.newsapi.org
     - Alphavantage - https://www.alphavantage.co
 
 ##Getting Started
